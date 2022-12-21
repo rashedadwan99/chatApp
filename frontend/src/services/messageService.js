@@ -1,6 +1,6 @@
 import { http } from "./httpService";
 
-const apiEndPoint = "/message"
+const apiEndPoint = "/api/message"
 export const sendMessageHandler = (content, chatId) => {
   return http.post(apiEndPoint, { chatId, content });
 };

@@ -20,7 +20,7 @@ import { getAllMessages, sendMessageHandler } from "../services/messageService";
 import ScrollableChat from "./ScrollableChat";
 import "./messages.css";
 
-const ENDPOINT = process.env.REACT_APP_ENDPOINT
+const ENDPOINT = "https://simple-chat-6uvv.onrender.com"
 let socket, selectedChatCompare;
 function SingleChat({ fetchAgain, setFetchAgain }) {
   const [messages, setMessages] = useState([]);

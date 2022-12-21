@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "build": "react-scripts frontend/build"
+    "build": ""
   },
   "keywords": [],
   "author": "Rashed Aladwan",

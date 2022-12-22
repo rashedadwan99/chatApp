@@ -14,13 +14,13 @@ import SignUp from "../components/authentications/SignUp";
 import Login from "../components/authentications/Login";
 function HomePage({ location }) {
   const history = useHistory();
+  const userInfo = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("user"));
-    if (!userInfo) {
-      history.push("/");
+    if (userInfo) {
+      history.push("/chats");
     }
-    else { history.push("/chats") }
-  }, []);
+
+  }, [history]);
 
   return (
     <Container maxW="xl" centerContent>

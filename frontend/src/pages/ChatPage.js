@@ -18,7 +18,7 @@ function ChatPage() {
       history.push("/");
     }
 
-  }, [])
+  }, [history])
   return (
     <div style={{ width: "100%" }}>
 

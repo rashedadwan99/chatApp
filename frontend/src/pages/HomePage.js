@@ -19,6 +19,7 @@ function HomePage({ location }) {
     if (!userInfo) {
       history.push("/");
     }
+    else { history.push("/chats") }
   }, []);
 
   return (

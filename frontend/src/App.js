@@ -12,10 +12,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-
-
-        <Route path="/" component={HomePage} exact />
-        <Route path="/chats" component={ChatPage} exact />
+        <Route path="/chats" render={(props) => user ? <ChatPage {...props} /> : <Redirect to="/" />} exact />
+        <Route path="/" render={(props) => !user ? <HomePage {...props} /> : <Redirect to="/chats" />} exact />
       </Switch>
     </div>
   );

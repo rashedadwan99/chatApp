@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { ChatState } from "../context/chatProvider";
 
 import SideDrawer from "../components/miscellaneous/SideDrawer";
 import MyChats from "../components/MyChats";
 import ChatBox from "../components/ChatBox";
-import { Redirect, useHistory } from "react-router-dom";
+
 
 function ChatPage() {
   const { user } = ChatState()
-  const history = useHistory()
+
   const [fetchAgain, setFetchAgain] = useState(false);
-  const userInfo = JSON.parse(localStorage.getItem("user"));
-  useEffect(() => {
 
-    if (!userInfo) {
-      history.push("/");
-    }
 
-  }, [history])
   return (
     <div style={{ width: "100%" }}>
 

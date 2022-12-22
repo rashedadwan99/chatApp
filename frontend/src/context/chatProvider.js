@@ -9,13 +9,11 @@ const ChatProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);
   const history = useHistory();
 
-  const userInfo = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user"));
     setUser(userInfo);
-    if (!userInfo) {
-      history.push("/");
-    }
-  }, [history]);
+
+  }, []);
   return (
     <ChatContext.Provider
       value={{

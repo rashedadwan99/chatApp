@@ -36,7 +36,7 @@ function Login() {
     }
     setLoading(true);
     try {
-      const { data } = await login({ email, password });
+      const { data } = await login({ email: email.trim(), password });
       toast({
         title: "Login Successful",
         statue: "success",

@@ -16,7 +16,6 @@ function HomePage({ location }) {
   const history = useHistory();
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
-
     if (!userInfo) {
       history.push("/");
     }

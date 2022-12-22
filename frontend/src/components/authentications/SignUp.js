@@ -94,7 +94,9 @@ function SignUp() {
       return;
     }
     try {
-      const { data } = await signUp({ name, email, password, picture });
+      const { data } = await signUp({
+        name, email: email.trim(), password, picture
+      });
       toast({
         title: "Registeration Successful",
         statue: "success",

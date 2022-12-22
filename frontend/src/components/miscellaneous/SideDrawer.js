@@ -49,7 +49,7 @@ function SideDrawer() {
   const history = useHistory()
   const handleLogout = () => {
     localStorage.removeItem("user");
-    history.push("/");
+    window.location("/");
   };
 
   const toast = useToast();

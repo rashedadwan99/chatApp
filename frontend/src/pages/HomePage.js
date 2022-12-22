@@ -21,6 +21,7 @@ function HomePage({ location }) {
       history.push("/");
     }
   }, []);
+
   return (
     <Container maxW="xl" centerContent>
       <Box

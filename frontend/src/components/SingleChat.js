@@ -20,7 +20,7 @@ import { getAllMessages, sendMessageHandler } from "../services/messageService";
 import ScrollableChat from "./ScrollableChat";
 import "./messages.css";
 
-const ENDPOINT = process.env.REACT_APP_ENDPOINT
+
 let socket, selectedChatCompare;
 function SingleChat({ fetchAgain, setFetchAgain }) {
   const [messages, setMessages] = useState([]);
@@ -70,7 +70,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   }, [selectedChat]);
 
   useEffect(() => {
-    socket = io(ENDPOINT);
+    socket = io(process.env.REACT_APP_ENDPOINT);
     socket.emit("setup", user);
     socket.on("connected", () => setSocketConnected(true));
     socket.on("typing fronted", () => setIsTyping(true));

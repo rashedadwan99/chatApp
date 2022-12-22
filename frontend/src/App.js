@@ -8,7 +8,7 @@ import "./App.css";
 
 
 function App() {
-  const { user } = ChatState()
+  const user = localStorage.getItem("user")
   return (
     <div className="App">
       <Switch>

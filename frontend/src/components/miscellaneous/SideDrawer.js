@@ -30,7 +30,9 @@ import ChatLoading from "../ChatLoading";
 import UserListItem from "../userAvatar/UserListItem";
 import { handleAccessChat } from "../../services/chatService";
 import { getSender } from "../config/ChatLogics";
+import { useHistory } from "react-router-dom";
 function SideDrawer() {
+  const history = useHistory()
   const {
     user,
     setSelectedChat,
@@ -47,7 +49,7 @@ function SideDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location = "/";
+    history.go("/")
   };
 
   const toast = useToast();

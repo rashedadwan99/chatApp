@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   FormControl,
@@ -47,7 +47,7 @@ function Login() {
       setLoading(false);
 
       localStorage.setItem("user", JSON.stringify(data));
-      window.location = "/chats";
+      history.go("/chats");
 
     } catch (error) {
       toast({
@@ -61,14 +61,17 @@ function Login() {
       setLoading(false);
     }
   };
-
+  const readEmail = (e) => {
+    e.target.value = e.target.value.trimLeft()
+    setEmail(e.target.value)
+  }
   return (
     <VStack spacing="4px">
       <FormControl id="email" isRequired>
         <FormLabel>email</FormLabel>
         <Input
           placeholder="Enter Your email"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => readEmail(e)}
           value={email}
         />
       </FormControl>

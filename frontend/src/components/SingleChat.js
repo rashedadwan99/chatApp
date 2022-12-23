@@ -114,6 +114,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
     }
   };
   const typingHandler = (e) => {
+    e.target.value = e.target.value.trimLeft()
     setNewMessage(e.target.value);
     if (!socketConnected) return;
     if (!isTyping) {

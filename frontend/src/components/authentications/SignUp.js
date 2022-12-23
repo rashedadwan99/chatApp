@@ -82,10 +82,26 @@ function SignUp() {
       setLoading(false);
       return;
     }
+    const emailRegex =
+      new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+
+    const isValidEmail = emailRegex.test(email);
+    if (!isValidEmail) {
+      toast({
+        title: "please enter a valid email",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
     if (password !== confirmPassword) {
       toast({
         title: "Passwords Do Not Match",
-        statue: "warning",
+        status: "warning",
         duration: 5000,
         isClosable: true,
         position: "bottom",
@@ -99,7 +115,7 @@ function SignUp() {
       });
       toast({
         title: "Registeration Successful",
-        statue: "success",
+        status: "success",
         duration: 5000,
         isClosable: true,
         position: "bottom",
@@ -111,7 +127,7 @@ function SignUp() {
       toast({
         title: "Error occoured",
         description: error.response.data.message,
-        statue: "error",
+        status: "error",
         duration: 5000,
         isClosable: true,
         position: "bottom",
@@ -119,20 +135,29 @@ function SignUp() {
       setLoading(false);
     }
   };
+  const readNameAndEmail = ({ currentTarget }) => {
+    currentTarget.value = currentTarget.value.trimLeft()
+    let { value, name } = currentTarget
+    name === "name" ? setName(value) : setEmail(value)
+  }
+
   return (
     <VStack spacing="4px">
       <FormControl id="first-name" isRequired>
         <FormLabel>name</FormLabel>
         <Input
           placeholder="Enter Your Name"
-          onChange={(e) => setName(e.target.value)}
+          name="name"
+          onChange={(e) => readNameAndEmail(e)}
         />
       </FormControl>
       <FormControl id="email" isRequired>
         <FormLabel>email</FormLabel>
         <Input
           placeholder="Enter Your email"
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+
+          onChange={(e) => readNameAndEmail(e)}
         />
       </FormControl>
       <FormControl id="password" isRequired>
@@ -198,6 +223,7 @@ function SignUp() {
       >
         Sign Up
       </Button>
+
     </VStack>
   );
 }

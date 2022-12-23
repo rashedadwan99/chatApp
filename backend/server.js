@@ -29,7 +29,7 @@ const server = app.listen(PORT, () => {
 const io = require("socket.io")(server, {
   pingTimeOut: 60000,
   cors: {
-    origin: "https://simple-chat-6uvv.onrender.com",
+    origin: "https://simple-chat-6uvv.onrender.com"
   },
 });
 

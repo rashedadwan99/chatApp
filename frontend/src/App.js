@@ -2,7 +2,6 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import ChatPage from "./pages/ChatPage";
 import HomePage from "./pages/HomePage";
-import { ChatState } from "./context/chatProvider";
 import "./App.css";
 
 

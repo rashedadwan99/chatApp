@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   FormControl,
@@ -48,6 +48,7 @@ function Login() {
 
       localStorage.setItem("user", JSON.stringify(data));
       window.location = "/chats";
+
     } catch (error) {
       toast({
         title: "Error occoured",
@@ -60,6 +61,7 @@ function Login() {
       setLoading(false);
     }
   };
+
   return (
     <VStack spacing="4px">
       <FormControl id="email" isRequired>

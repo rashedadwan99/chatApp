@@ -112,10 +112,11 @@ function SideDrawer() {
   };
   const handleCloseDrawer = () => {
     onClose();
-    setSearchResult([])
+    setSearchResult([]);
+    setSearch("")
   }
   const handleReadSearchQuery = (query) => {
-    if (!query.length) return setSearchResult([])
+    if (!query.length) setSearchResult([])
     setSearch(query)
   }
   return (

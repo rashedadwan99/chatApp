@@ -215,10 +215,10 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               placeholder="Enter a message.."
               onChange={typingHandler}
               value={newMessage}
-              width="90%"
+              width="93%"
             />
-            <BiSend onClick={sendMessage} width="10%" />
 
+            <IconButton backgroundColor="#E8E8E8" aria-label='send' icon={<BiSend onClick={sendMessage} width="7%" fontSize="35px" cursor="pointer" />} />
           </FormControl>
         </Box>
       )}

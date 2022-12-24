@@ -67,7 +67,7 @@ function Login() {
   }
   return (
     <VStack spacing="4px">
-      <FormControl id="email" isRequired>
+      <FormControl id="email" >
         <FormLabel>email</FormLabel>
         <Input
           placeholder="Enter Your email"
@@ -75,7 +75,7 @@ function Login() {
           value={email}
         />
       </FormControl>
-      <FormControl id="password" isRequired>
+      <FormControl id="password" >
         <FormLabel>password</FormLabel>
         <InputGroup>
           <Input

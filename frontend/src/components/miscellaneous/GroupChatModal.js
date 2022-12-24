@@ -13,6 +13,7 @@ import {
   FormControl,
   Input,
   Box,
+  Spinner,
 } from "@chakra-ui/react";
 import { ChatState } from "../../context/chatProvider";
 import { searchUser } from "../../services/userService";
@@ -26,6 +27,7 @@ function GroupChatModal({ children }) {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [loadingGroupCreation, setLoadingGroupCreation] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const toast = useToast();
@@ -91,19 +93,21 @@ function GroupChatModal({ children }) {
       return;
     }
     try {
+
+      setLoadingGroupCreation(true)
       const { data } = await createGroupChat(selectedUsers, groupChatName);
       setChats([data, ...chats]);
+      setLoadingGroupCreation(false)
       closeModal();
       toast({
         title: "New Group Chat Created!",
-
         status: "success",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
     } catch (error) {
-      console.log(error);
+      setLoadingGroupCreation(false)
       toast({
         title: "Error occoured",
         description: error.response.data.message,
@@ -139,7 +143,7 @@ function GroupChatModal({ children }) {
               />
             </FormControl>
             <FormControl>
-              <Input placeholder="Add Users" mb={1} onChange={handleSearch} />
+              <Input placeholder="Add Users" mb={1} onChange={handleSearch} value={searchQuery} />
             </FormControl>
           </ModalBody>
           <Box w="100%" display="flex" flexWrap="wrap" px={5}>
@@ -172,8 +176,8 @@ function GroupChatModal({ children }) {
             )}
           </Box>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
-              Create Chat
+            <Button colorScheme="blue" mr={3} onClick={!loadingGroupCreation && handleSubmit}>
+              {loadingGroupCreation ? <Spinner /> : "Create Chat"}
             </Button>
           </ModalFooter>
         </ModalContent>

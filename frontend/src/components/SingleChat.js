@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   Box,
   FormControl,
@@ -198,7 +198,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               <ScrollableChat messages={messages} />
             </div>
           )}
-          <FormControl isRequired mt={3} display="flex" alignItems="center" justifyContent="center">
+          <FormControl isRequired mt={3} display="flex" alignItems="center" justifyContent="flex-start">
             {isTyping && (
               <div>
                 <Lottie
@@ -216,7 +216,8 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               value={newMessage}
               width="80%"
             />
-            <i className="fa-solid fa-paper-plane-top" onClick={sendMessage}></i>
+            <ArrowForwardIcon onClick={sendMessage} width="18%" />
+
           </FormControl>
         </Box>
       )}

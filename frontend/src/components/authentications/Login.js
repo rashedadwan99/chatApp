@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { login } from "../../services/userService";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -92,7 +93,7 @@ function Login() {
               margin="0 5px 0 0"
               onClick={handleClick}
             >
-              {show ? "hide" : "show"}
+              {show ? <ViewOffIcon /> : <ViewIcon />}
             </Button>
           </InputRightElement>
         </InputGroup>

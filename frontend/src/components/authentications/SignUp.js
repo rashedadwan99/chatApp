@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import {
   Button,
@@ -11,6 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { signUp } from "../../services/userService";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 function SignUp() {
   const [show, setShow] = useState(false);
@@ -21,7 +21,6 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const [picture, setPicture] = useState();
   const toast = useToast();
-  const history = useHistory();
   const handleClick = () => {
     setShow(!show);
   };
@@ -176,7 +175,7 @@ function SignUp() {
               margin="0 5px 0 0"
               onClick={handleClick}
             >
-              {show ? "hide" : "show"}
+              {show ? <ViewOffIcon /> : <ViewIcon />}
             </Button>
           </InputRightElement>
         </InputGroup>

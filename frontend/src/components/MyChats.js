@@ -1,6 +1,6 @@
 import { AddIcon } from "@chakra-ui/icons";
-import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { Box, Button, Spinner, Stack, Text, useToast } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { ChatState } from "../context/chatProvider";
 import { getAllChats } from "../services/chatService";
 import { getSender } from "./config/ChatLogics";
@@ -8,13 +8,16 @@ import GroupChatModal from "./miscellaneous/GroupChatModal";
 
 function MyChats({ fetchAgain }) {
   const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState();
+  const [loadingMychats, setLoadingMyChats] = useState(false)
   const toast = useToast();
   const fetchChats = async () => {
     try {
+      setLoadingMyChats(true)
       const { data } = await getAllChats();
-
       setChats(data);
+      setLoadingMyChats(false)
     } catch (error) {
+      setLoadingMyChats(false)
       toast({
         title: "Error occoured",
         description: error.response.data.message,
@@ -43,7 +46,7 @@ function MyChats({ fetchAgain }) {
       <Box
         pb={3}
         px={3}
-        fontSize={{ base: "28px", md: "30px" }}
+        fontSize={{ base: "23px", md: "30px" }}
         fontFamily="Work sans"
         display="flex"
         w="100%"
@@ -74,7 +77,7 @@ function MyChats({ fetchAgain }) {
         fontFamily="Work sans"
       >
         <Stack overflowY="scroll" w="100%">
-          {chats.map((chat) => {
+          {!loadingMychats ? !chats.length ? chats.map((chat) => {
             return (
               <Box
                 onClick={() => setSelectedChat(chat)}
@@ -97,7 +100,12 @@ function MyChats({ fetchAgain }) {
                 </Text>
               </Box>
             );
-          })}
+          }) :
+            <Box width="100%">
+              <Text fontSize={{ base: "28px", md: "30px" }}>
+                There are no chats, search for user to create a chat with
+              </Text>
+            </Box> : <Spinner margin="15px auto" />}
         </Stack>
       </Box>
     </Box>

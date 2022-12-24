@@ -88,7 +88,7 @@ function SideDrawer() {
       const { data } = await handleAccessChat(userId);
 
       if (!chats.find((c) => c._id === data._id)) {
-        setChats([...chats, data]);
+        setChats([data, ...chats]);
       }
 
       setLoadingChat(false);

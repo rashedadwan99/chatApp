@@ -217,11 +217,11 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               placeholder="Enter a message.."
               onChange={typingHandler}
               value={newMessage}
-              width={{ base: "93%", md: "90%" }}
+              width="100%"
 
             />
 
-            <BiSend onClick={sendMessage} width={{ base: "7%" }} fontSize="35px" cursor="pointer" />
+            <BiSend onClick={sendMessage} fontSize="35px" cursor="pointer" />
           </FormControl>
         </Box>
       )}

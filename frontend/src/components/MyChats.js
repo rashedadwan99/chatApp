@@ -46,7 +46,7 @@ function MyChats({ fetchAgain }) {
       <Box
         pb={3}
         px={3}
-        fontSize={{ base: "23px", md: "30px" }}
+        fontSize={{ base: "20px", md: "30px" }}
         fontFamily="Work sans"
         display="flex"
         w="100%"
@@ -102,8 +102,8 @@ function MyChats({ fetchAgain }) {
             );
           }) :
             <Box width="100%">
-              <Text fontSize={{ base: "28px", md: "30px" }}>
-                There are no chats, search for user to create a chat with
+              <Text fontSize={{ base: "20px", md: "30px" }} width="100%" display="flex" justifyContent="center">
+                There are no chats, search for user to start a chat with
               </Text>
             </Box> : <Spinner margin="15px auto" />}
         </Stack>

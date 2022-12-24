@@ -216,9 +216,10 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               onChange={typingHandler}
               value={newMessage}
               width="93%"
+
             />
 
-            <IconButton backgroundColor="#E8E8E8" aria-label='send' icon={<BiSend onClick={sendMessage} width="7%" fontSize="35px" cursor="pointer" />} />
+            <BiSend onClick={sendMessage} width="7%" fontSize="35px" cursor="pointer" />
           </FormControl>
         </Box>
       )}

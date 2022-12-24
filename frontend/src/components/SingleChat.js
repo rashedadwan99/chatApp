@@ -95,6 +95,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   });
   const toast = useToast();
   const sendMessage = async () => {
+    if (!newMessage.length) return
 
     socket.emit("stop typing", selectedChat._id);
     try {
@@ -115,6 +116,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
 
   };
   const typingHandler = (e) => {
+
     e.target.value = e.target.value.trimLeft()
     setNewMessage(e.target.value);
     if (!socketConnected) return;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
   Box,
   FormControl,
@@ -10,6 +10,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
+import { BiSend } from 'react-icons/bi';
 import Lottie from "react-lottie";
 import { ChatState } from "../context/chatProvider";
 import { getSender, getSenderFull } from "./config/ChatLogics";
@@ -214,9 +215,9 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               placeholder="Enter a message.."
               onChange={typingHandler}
               value={newMessage}
-              width="80%"
+              width="90%"
             />
-            <ArrowForwardIcon onClick={sendMessage} width="18%" />
+            <BiSend onClick={sendMessage} width="10%" />
 
           </FormControl>
         </Box>

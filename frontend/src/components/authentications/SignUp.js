@@ -196,7 +196,7 @@ function SignUp() {
               margin="0 5px 0 0"
               onClick={handleClick}
             >
-              {show ? "hide" : "show"}
+              {show ? <ViewOffIcon /> : <ViewIcon />}
             </Button>
           </InputRightElement>
         </InputGroup>

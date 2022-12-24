@@ -217,7 +217,7 @@ function SignUp() {
       <Button
         colorScheme="blue"
         width="100%"
-        style={{ marginTop: "5px" }}
+        style={{ marginTop: "15px" }}
         isLoading={loading}
         onClick={submitHandler}
       >

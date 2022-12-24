@@ -93,25 +93,25 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
     });
   });
   const toast = useToast();
-  const sendMessage = async (e) => {
-    if (e.key === "Enter" && newMessage) {
-      socket.emit("stop typing", selectedChat._id);
-      try {
-        const { data } = await sendMessageHandler(newMessage, selectedChat._id);
-        setNewMessage("");
-        socket.emit("new message", data);
-        setMessages([...messages, data]);
-      } catch (error) {
-        toast({
-          title: "Error occoured",
-          description: "Failed to send the message",
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
-        });
-      }
+  const sendMessage = async () => {
+
+    socket.emit("stop typing", selectedChat._id);
+    try {
+      const { data } = await sendMessageHandler(newMessage, selectedChat._id);
+      setNewMessage("");
+      socket.emit("new message", data);
+      setMessages([...messages, data]);
+    } catch (error) {
+      toast({
+        title: "Error occoured",
+        description: "Failed to send the message",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
     }
+
   };
   const typingHandler = (e) => {
     e.target.value = e.target.value.trimLeft()
@@ -198,17 +198,15 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               <ScrollableChat messages={messages} />
             </div>
           )}
-          <FormControl onKeyDown={sendMessage} isRequired mt={3}>
-            {isTyping ? (
+          <FormControl isRequired mt={3} display="flex" alignItems="center" justifyContent="center">
+            {isTyping && (
               <div>
                 <Lottie
                   options={defaultOptions}
                   width={70}
-                  style={{ marginBottom: 15, marginLeft: 0 }}
+                  style={{ marginBottom: 15, marginLeft: "5px" }}
                 />
               </div>
-            ) : (
-              <></>
             )}
             <Input
               variant="filled"
@@ -216,7 +214,9 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               placeholder="Enter a message.."
               onChange={typingHandler}
               value={newMessage}
+              width="80%"
             />
+            <i className="fa-solid fa-paper-plane-top" onClick={sendMessage}></i>
           </FormControl>
         </Box>
       )}

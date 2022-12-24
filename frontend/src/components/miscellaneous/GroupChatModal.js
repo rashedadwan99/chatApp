@@ -153,7 +153,10 @@ function GroupChatModal({ children }) {
               );
             })}
           </Box>
-          <Box px={5}>
+          <Box px={5} style={{
+            maxHeight: "44vh",
+            overflowY: "scroll"
+          }}>
             {loading ? (
               <div>loading..</div>
             ) : (

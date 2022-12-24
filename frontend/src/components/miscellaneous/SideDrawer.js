@@ -110,6 +110,14 @@ function SideDrawer() {
     setSelectedChat(chat);
     setNotifications(notifications.filter((n) => n !== notification));
   };
+  const handleCloseDrawer = () => {
+    onClose();
+    setSearchResult([])
+  }
+  const handleReadSearchQuery = (query) => {
+    if (!query.length) return setSearchResult([])
+    setSearch(query)
+  }
   return (
     <>
       <Box
@@ -177,7 +185,7 @@ function SideDrawer() {
           </Menu>
         </div>
       </Box>
-      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+      <Drawer placement="left" onClose={handleCloseDrawer} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
@@ -187,7 +195,7 @@ function SideDrawer() {
                 placeholder="Search By Name or email"
                 mr={2}
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => handleReadSearchQuery(e.target.value)}
                 fontSize="15px"
               />
               <Button onClick={handleSearch}>Go</Button>

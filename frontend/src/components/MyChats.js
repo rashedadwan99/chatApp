@@ -77,7 +77,7 @@ function MyChats({ fetchAgain }) {
         fontFamily="Work sans"
       >
         <Stack overflowY="scroll" w="100%">
-          {!loadingMychats ? !chats.length ? chats.map((chat) => {
+          {!loadingMychats ? chats.map((chat) => {
             return (
               <Box
                 onClick={() => setSelectedChat(chat)}
@@ -100,12 +100,7 @@ function MyChats({ fetchAgain }) {
                 </Text>
               </Box>
             );
-          }) :
-            <Box width="100%">
-              <Text fontSize={{ base: "20px", md: "30px" }} width="100%" display="flex" justifyContent="center">
-                There are no chats, search for user to start a chat with
-              </Text>
-            </Box> : <Spinner margin="15px auto" />}
+          }) : <Spinner margin="15px auto" />}
         </Stack>
       </Box>
     </Box>

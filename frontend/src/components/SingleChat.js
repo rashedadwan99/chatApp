@@ -201,16 +201,16 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               <ScrollableChat messages={messages} />
             </div>
           )}
+          {isTyping && (
+            <div>
+              <Lottie
+                options={defaultOptions}
+                width={70}
+                style={{ marginBottom: 5, marginLeft: "5px" }}
+              />
+            </div>
+          )}
           <FormControl isRequired mt={3} display="flex" alignItems="center" justifyContent="flex-start">
-            {isTyping && (
-              <div>
-                <Lottie
-                  options={defaultOptions}
-                  width={70}
-                  style={{ marginBottom: 15, marginLeft: "5px" }}
-                />
-              </div>
-            )}
             <Input
               variant="filled"
               bg="#E0E0E0"
